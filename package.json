@@ -1,0 +1,15 @@
+{
+  "name": "event_widget_api",
+  "version": "1.0.0",
+  "description": "This is the basic API for Event widget that gives basic end-points from creation to deleting of the event and other necessary endpoints.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Event_Widget_API"
+  },
+  "author": "Rwandantechy",
+  "license": "ISC"
+}
