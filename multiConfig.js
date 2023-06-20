@@ -1,36 +1,35 @@
-const moment = require("moment-timezone");
-const multer = require("multer");
-const fs = require("fs");
+const moment = require('moment-timezone')
+const multer = require('multer')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = "uploads/";
+    const uploadDir = 'uploads/'
     if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir);
+      fs.mkdirSync(uploadDir)
     }
-    cb(null, uploadDir);
+    cb(null, uploadDir)
   },
   filename: function (req, file, cb) {
-    const originalName = file.originalname;
-    const timezone = "Asia/Kolkata";
-    const currentDateTime = moment().tz(timezone).format("YYYYMMDD_HHmmss.SSS");
-    const fileName = currentDateTime + "_" + originalName;
-    cb(null, fileName);
-  },
-});
+    const originalName = file.originalname
+    const timezone = 'Asia/Kolkata'
+    const currentDateTime = moment().tz(timezone).format('YYYYMMDD_HHmmss.SSS')
+    const fileName = currentDateTime + '_' + originalName
+    cb(null, fileName)
+  }
+})
 
 const upload = multer({
-  storage: storage,
+  storage,
   fileFilter: function (req, file, cb) {
-    const allowedFileTypes = ["image/jpeg", "image/png"]; // Add any other allowed file types
+    const allowedFileTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/avif']
 
     if (allowedFileTypes.includes(file.mimetype)) {
-      cb(null, true);
+      cb(null, true)
     } else {
-      cb(new Error("Invalid file type."));
+      cb(new Error('Invalid file type.'))
     }
-  },
-});
+  }
+})
 
-module.exports = upload;
-
+module.exports = upload
